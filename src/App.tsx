@@ -1,3 +1,4 @@
+import { BodyMap } from './components/BodyMap/BodyMap'
 import { BundleLoader } from './components/BundleLoader'
 import { PatientHeader } from './components/PatientHeader'
 import { RulesNotice } from './components/RulesNotice'
@@ -38,7 +39,7 @@ export default function App() {
       )}
       <RulesNotice />
       <section className="app__body" aria-label="Silueta del cuerpo">
-        <p>Silueta: en construcción (Tarea 9).</p>
+        <BodyMap bodyState={bodyState} selectedSystemId={state.selectedSystemId} onSelect={history.selectSystem} />
       </section>
     </main>
   )

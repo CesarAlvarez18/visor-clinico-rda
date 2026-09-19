@@ -119,7 +119,7 @@ Contexto técnico:
   - Región seleccionada con borde resaltado.
 - **Depende de**: Tarea 6 (tipos de `BodyState`); puede desarrollarse en paralelo con la 7 y la 8 usando datos de prueba.
 - **Verificación**: pruebas: renderiza 12 elementos con rol `button`; `aria-label` incluye el nivel; "Sin datos" no usa la clase de Normal; `onSelect` se dispara con clic y con Enter. Revisión visual con simulador de daltonismo (DevTools → Rendering → Emulate vision deficiencies).
-- [ ] Hecha
+- [x] Hecha (2026-09-19; paleta Okabe-Ito + rojo oscuro para Grave, "Sin datos" con trama de rayas; el tooltip vive siempre en el DOM y los botones lo referencian con `aria-describedby`. La revisión con simulador de daltonismo queda para la Tarea 12)
 
 ### Tarea 10 — Panel lateral de trazabilidad
 - **Qué**: componente `SystemDetailPanel` que muestra el sistema seleccionado, su nivel, los diagnósticos que lo explican (código, descripción, rol, nivel aportado, estado clínico, fecha de la atención, profesional, organización) con la causa destacada, el mensaje de "Sin datos", y la sección "Diagnósticos sin sistema asignado".

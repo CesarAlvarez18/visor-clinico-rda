@@ -1,0 +1,193 @@
+.body-map {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) auto;
+  grid-template-areas:
+    'svg chips'
+    'legend legend';
+  gap: 16px 24px;
+  align-items: start;
+  justify-content: center;
+}
+
+.body-map__svg {
+  grid-area: svg;
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+}
+
+.body-map__outline {
+  fill: #f8fafc;
+  stroke: #94a3b8;
+  stroke-width: 1.5;
+}
+
+.system-region {
+  cursor: pointer;
+  outline: none;
+}
+
+.system-region:hover path,
+.system-region:focus-visible path {
+  filter: brightness(1.08);
+  stroke-width: 2.5;
+}
+
+.system-region:focus-visible path {
+  stroke: #1d5c8a;
+  stroke-dasharray: 4 2;
+}
+
+.system-region--selected path {
+  filter: drop-shadow(0 0 4px rgba(29, 92, 138, 0.6));
+}
+
+/* --- Chips --- */
+.body-map__chips {
+  grid-area: chips;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 220px;
+  padding-top: 24px;
+}
+
+.system-chip {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  grid-template-areas:
+    'swatch name'
+    'swatch level';
+  column-gap: 10px;
+  align-items: center;
+  text-align: left;
+  font: inherit;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--color-border);
+  background: #fff;
+  cursor: pointer;
+}
+
+.system-chip:hover {
+  border-color: #94a3b8;
+}
+
+.system-chip--selected {
+  border-color: #1d5c8a;
+  border-width: 2.5px;
+  box-shadow: 0 0 0 3px rgba(29, 92, 138, 0.2);
+}
+
+.system-chip__swatch,
+.legend__swatch {
+  grid-area: swatch;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  display: inline-block;
+}
+
+.system-chip__name {
+  grid-area: name;
+  font-weight: 600;
+}
+
+.system-chip__level {
+  grid-area: level;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Colores por nivel (mismos que levelStyles.ts) --- */
+.level--normal .system-chip__swatch,
+.level--normal .legend__swatch {
+  background: #009e73;
+}
+.level--mild .system-chip__swatch,
+.level--mild .legend__swatch {
+  background: #f0e442;
+}
+.level--moderate .system-chip__swatch,
+.level--moderate .legend__swatch {
+  background: #e69f00;
+}
+.level--severe .system-chip__swatch,
+.level--severe .legend__swatch {
+  background: #a50f15;
+}
+.level--no-data .system-chip__swatch,
+.level--no-data .legend__swatch {
+  background: repeating-linear-gradient(45deg, #e5e7eb 0 3px, #9ca3af 3px 5px);
+}
+
+.system-chip.level--severe .system-chip__level {
+  color: #7a0b10;
+  font-weight: 600;
+}
+
+/* --- Leyenda --- */
+.legend {
+  grid-area: legend;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.9375rem;
+}
+
+.legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- Tooltip --- */
+.system-tooltip {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, -100%);
+  max-width: 280px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #1f2933;
+  color: #fff;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  pointer-events: none;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.system-tooltip--visible {
+  display: flex;
+}
+
+.system-tooltip__level {
+  font-weight: 600;
+}
+
+.system-tooltip__summary {
+  opacity: 0.9;
+}
+
+@media (max-width: 760px) {
+  .body-map {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'svg'
+      'chips'
+      'legend';
+  }
+  .body-map__chips {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 0;
+  }
+}
