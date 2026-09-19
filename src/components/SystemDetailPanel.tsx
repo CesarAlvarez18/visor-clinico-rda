@@ -25,9 +25,10 @@ export function SystemDetailPanel({ state, encounter, onClose }: SystemDetailPan
     return () => document.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  // Al abrir o cambiar de sistema, el foco va al título para lectores de pantalla.
+  // Al abrir o cambiar de sistema, el foco va al título para lectores de
+  // pantalla, sin desplazar la página: la silueta debe seguir a la vista.
   useEffect(() => {
-    headingRef.current?.focus()
+    headingRef.current?.focus({ preventScroll: true })
   }, [state.systemId])
 
   return (

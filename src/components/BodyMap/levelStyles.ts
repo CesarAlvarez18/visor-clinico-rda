@@ -14,7 +14,7 @@ export interface LevelStyle {
 }
 
 export const LEVEL_STYLES: Record<SystemLevel, LevelStyle> = {
-  normal: { fill: '#009E73', stroke: '#00654a', text: '#ffffff', short: 'Normal' },
+  normal: { fill: '#009E73', stroke: '#00654a', text: '#1f2933', short: 'Normal' },
   mild: { fill: '#F0E442', stroke: '#8a7d00', text: '#1f2933', short: 'Leve' },
   moderate: { fill: '#E69F00', stroke: '#8f5f00', text: '#1f2933', short: 'Moderado' },
   severe: { fill: '#A50F15', stroke: '#5e070c', text: '#ffffff', short: 'Grave' },

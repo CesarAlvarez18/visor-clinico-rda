@@ -1,7 +1,7 @@
 # Plan: Silueta del cuerpo interactiva
 
 - Fecha: 2026-09-19
-- Estado: aprobado
+- Estado: completado
 - Spec: [docs/specs/2026-09-19-silueta-cuerpo.md](../specs/2026-09-19-silueta-cuerpo.md)
 
 ## 1. Objetivo
@@ -146,7 +146,7 @@ Contexto técnico:
 - **Detalles**: comprobar con DevTools (Lighthouse accesibilidad, emulación de deficiencias visuales); recorrer con teclado toda la pantalla; confirmar que ningún texto de interfaz quedó en inglés.
 - **Depende de**: Tarea 11.
 - **Verificación**: `npm run lint`, `npm test` y `npm run build` en verde; `verify-after-changes` con sus cinco casos aprobados.
-- [ ] Hecha
+- [x] Hecha (2026-09-19; contraste del rótulo "Normal" corregido a texto oscuro; foco del panel con `preventScroll`; ver sección Verificación)
 
 ### Cobertura
 - CA-1: T3, T7, T8, T9 · CA-2: T4, T7, T8 · CA-3: T3, T7, T8 · CA-4: T6, T9 · CA-5: T3, T6, T10 · CA-6: T3, T5, T6, T10 · CA-7: T5, T6 · CA-8: T3, T6, T10 · CA-9: T3, T6, T10 · CA-10: T3, T4, T8 · CA-11: T9 · CA-12: T9, T10 · CA-13: T10 · CA-14: T10 · CA-15: T7, T11 · CA-16: T7, T11 · CA-17: T9, T12 · CA-18: T9, T12 · CA-19: T11, T12 · CA-20: T8.
@@ -158,3 +158,22 @@ Contexto técnico:
 - **Reglas sin validación clínica**: mapeo CIE-10 y tabla de roles son propuestas. Etiqueta visible en la interfaz y archivos de configuración fáciles de cambiar.
 - **Silueta en SVG propio**: dibujar paths razonables toma tiempo; se aceptan formas esquemáticas en v1 mientras las regiones sean reconocibles.
 - **Diagnósticos crónicos que no se repiten en cada atención**: el médico puede verlos "desaparecer". Se advierte en la interfaz; integrar el RDA de paciente es trabajo futuro.
+
+## Verificación
+
+- Fecha: 2026-09-19. Pruebas automatizadas: 80 en 14 archivos, lint y build en verde. Servidor `npm run dev`, navegador integrado, datos sintéticos `paciente-01` y `paciente-02`.
+
+| # | Caso | CA | Resultado |
+|---|---|---|---|
+| 1 | Flujo principal: cargar paciente, hover y clic en el corazón | CA-1, CA-11, CA-12 | Pasa. Tooltip "Cardiovascular · Moderado · I25.2 … (diagnóstico primario)"; panel con la causa destacada |
+| 2 | Urgencias: triage, nivel mínimo por código, panel abierto al cambiar de atención | CA-7, CA-10, CA-15 | Pasa. "Triage II · Emergencia"; corazón Grave por I21.0; panel actualizado |
+| 3 | Hospitalización: comorbilidad + complicación, diagnóstico resuelto | CA-5, CA-8 | Pasa. Respiratorio Grave con J18.9 como causa; digestivo "Sin datos" con K29.7 "no activo" |
+| 4 | Datos faltantes y errores: un solo diagnóstico, código sin mapeo, sin rol, archivo inválido, pacientes distintos | CA-2, CA-3, CA-4, CA-6, CA-9 | Pasa. Once sistemas con trama "Sin datos" y ninguno verde; Z00.0 aparte; F32.1 "rol no registrado"; errores claros sin silueta |
+| 5 | Accesibilidad: teclado (Tab, Enter, Escape), tablet 768 px, etiqueta de reglas | CA-14, CA-17, CA-18, CA-19, CA-20 | Pasa. Foco visible y tooltip al enfocar; panel abre con Enter y cierra con Escape; sin scroll horizontal a 768 px |
+
+- Corregido durante la verificación: el foco al título del panel desplazaba la página (ahora `preventScroll`).
+- Pendientes / mejoras futuras:
+  - Revisar la paleta con el simulador de daltonismo de Chrome DevTools (no disponible en el navegador integrado); la paleta es Okabe-Ito + rojo oscuro y todo nivel lleva texto.
+  - Validación clínica del mapeo CIE-10 → sistema y de la tabla rol → nivel.
+  - Arrastre de diagnósticos crónicos entre atenciones (RDA de paciente) y signos vitales cuando la guía los aporte: fuera del alcance v1.
+  - Validar los Bundles sintéticos con un validador FHIR contra los perfiles de la guía.

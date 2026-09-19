@@ -97,7 +97,7 @@ Semáforo de 4 niveles, siempre acompañado de texto o ícono (no depender solo 
 
 ## Estado del proyecto
 
-- **Fase**: implementación del primer feature, la silueta del cuerpo interactiva (spec `docs/specs/2026-09-19-silueta-cuerpo.md`, plan `docs/plans/2026-09-19-silueta-cuerpo.md`).
+- **Fase**: primer feature completado y verificado el 2026-09-19: silueta del cuerpo interactiva (spec `docs/specs/2026-09-19-silueta-cuerpo.md`, plan `docs/plans/2026-09-19-silueta-cuerpo.md`, con sección de Verificación y mejoras futuras). Siguientes candidatos: tarjetas (medicamentos, alergias, procedimientos), arrastre de diagnósticos crónicos vía RDA de paciente, validación clínica de las reglas.
 - **Stack (prototipo)**: **React 19 + TypeScript + Vite 8**, todo en el navegador (sin backend). Pruebas con **Vitest 5** + Testing Library (jsdom); lint con **oxlint** (el que trae la plantilla de Vite). Tipos FHIR con `@types/fhir`. Silueta en **SVG propio**. Backend, autenticación y auditoría se agregarán cuando se salga de datos sintéticos.
 - **Capas en `src/`**: `domain/` (tipos del dominio), `fhir/` (lectura y validación de Bundles), `rules/` (mapeos, configuración y cálculo de nivel como funciones puras, para poder moverlas a un backend después), `state/` (estado de la aplicación), `components/` (silueta, panel, selector, encabezado), `data/examples/` (Bundles sintéticos), `test/` (setup de pruebas).
 - **Comandos**: `npm run dev` (servidor en http://localhost:5173), `npm run build`, `npm test` (Vitest, una pasada), `npm run test:watch`, `npm run lint`. En Claude Code el servidor se levanta con la configuración `visor` de `.claude/launch.json`.
