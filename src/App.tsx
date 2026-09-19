@@ -1,5 +1,6 @@
 import { BodyMap } from './components/BodyMap/BodyMap'
 import { BundleLoader } from './components/BundleLoader'
+import { EncounterSelector } from './components/EncounterSelector'
 import { PatientHeader } from './components/PatientHeader'
 import { RulesNotice } from './components/RulesNotice'
 import { SystemDetailPanel } from './components/SystemDetailPanel'
@@ -33,6 +34,7 @@ export default function App() {
     <main className="app">
       <PatientHeader patient={record.patient} ageAtEncounter={record.ageAtEncounter} onReset={history.reset} />
       <div className="app__context">
+        <EncounterSelector encounters={state.encounters} selectedId={state.selectedEncounterId} onSelect={history.selectEncounter} />
         <ViewingIndicator encounter={record.encounter} />
         <TriageAlert triage={record.encounter.triage} encounterKind={record.encounter.kind} />
       </div>

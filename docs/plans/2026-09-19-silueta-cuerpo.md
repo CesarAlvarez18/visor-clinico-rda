@@ -137,7 +137,7 @@ Contexto técnico:
 - **Detalles**: al cambiar la atención se recalcula `bodyState`, se actualizan silueta, tooltip, panel (si está abierto, mismo sistema) y alerta de triage. Con una sola atención el selector queda deshabilitado con esa atención visible. Layout con CSS grid; a ≥ 768 px silueta y panel caben sin scroll horizontal; en anchos menores el panel pasa debajo.
 - **Depende de**: Tareas 7, 8, 9, 10.
 - **Verificación**: prueba de integración: cargar el paciente de ejemplo, elegir la urgencias, comprobar que cambia el nivel del sistema cardiovascular, el "Viendo" y el triage; con un solo Bundle el selector no ofrece opciones. Revisión manual a 768 px y 1280 px.
-- [ ] Hecha
+- [x] Hecha (2026-09-19; `src/App.integration.test.tsx` cubre CA-9, CA-13 a CA-16; revisado en el navegador a 1280 px (panel a la derecha) y 768 px (panel debajo, sin scroll horizontal))
 
 ### Tarea 12 — Pulido de accesibilidad y verificación en navegador
 - **Qué**: revisión final de contraste, foco visible, orden de tabulación, textos en español, y ejecución del skill `verify-after-changes`.
