@@ -53,7 +53,7 @@ export function SystemRegion({ shape, state, selected, tooltipId, onSelect, onHo
         strokeWidth={selected ? 2.5 : 1.2}
         filter={`url(#${GLOW_FILTER_ID})`}
       />
-      <LevelBadge level={state.level} x={shape.label.x} y={shape.label.y} anchor={shape.label.anchor} />
+      <LevelBadge level={state.level} side={shape.label.side} y={shape.label.y} to={shape.label.to} />
     </g>
   )
 }

@@ -6,88 +6,121 @@ import { joinPaths, mirrorPath, symmetricPath, type Cubic } from './svgPath'
 // derecho se genera en espejo. El "lado derecho" del paciente queda a la
 // izquierda del espectador: por eso el hígado está en x < 150 y el corazón
 // se inclina hacia x > 150.
+//
+// Proporciones (aprox. 7,5 cabezas): cabeza 88 px, hombros 2,3 cabezas de
+// ancho, brazos ligeramente separados del tronco con las manos abiertas a la
+// altura de los muslos.
 
-export const VIEW_BOX = { width: 300, height: 640 }
+/** El lienzo deja 50 px de margen a cada lado del cuerpo para los rótulos. */
+export const VIEW_BOX = { x: -50, y: 0, width: 400, height: 640 }
+
+/** Posición x de los rótulos en cada margen. */
+export const LABEL_X = { left: 26, right: 274 }
 
 // --- Contorno del cuerpo ------------------------------------------------
 
 const LEFT_SIDE: Cubic[] = [
-  // cabeza: sien y mejilla
-  { c1: [126, 10], c2: [111, 30], to: [111, 54] },
+  // cráneo y sien
+  { c1: [128, 8], c2: [114, 26], to: [114, 52] },
   // mejilla, mandíbula y mentón
-  { c1: [111, 74], c2: [122, 92], to: [136, 100] },
+  { c1: [114, 74], c2: [124, 92], to: [134, 98] },
   // cuello
-  { c1: [137, 108], c2: [137, 116], to: [136, 124] },
+  { c1: [135, 106], c2: [135, 112], to: [134, 118] },
   // trapecio hasta el hombro
-  { c1: [120, 128], c2: [96, 134], to: [82, 144] },
+  { c1: [116, 122], c2: [86, 128], to: [70, 138] },
   // deltoides
-  { c1: [70, 150], c2: [64, 160], to: [64, 176] },
+  { c1: [58, 144], c2: [52, 158], to: [52, 176] },
   // brazo hasta el codo
-  { c1: [62, 202], c2: [60, 232], to: [58, 262] },
+  { c1: [50, 206], c2: [48, 240], to: [46, 272] },
   // antebrazo hasta la muñeca
-  { c1: [54, 290], c2: [50, 320], to: [46, 346] },
+  { c1: [42, 306], c2: [36, 340], to: [32, 370] },
   // mano hasta la punta de los dedos
-  { c1: [44, 360], c2: [40, 378], to: [40, 394] },
+  { c1: [28, 386], c2: [26, 408], to: [30, 424] },
   // dedos
-  { c1: [42, 402], c2: [54, 404], to: [58, 394] },
+  { c1: [34, 432], c2: [52, 432], to: [58, 420] },
   // cara interna de la mano
-  { c1: [60, 380], c2: [62, 364], to: [64, 350] },
+  { c1: [60, 404], c2: [58, 386], to: [56, 372] },
   // cara interna del antebrazo
-  { c1: [70, 322], c2: [76, 294], to: [80, 266] },
+  { c1: [62, 340], c2: [70, 306], to: [76, 276] },
   // cara interna del brazo hasta la axila
-  { c1: [86, 240], c2: [90, 214], to: [94, 190] },
-  // costado y cintura
-  { c1: [94, 224], c2: [100, 264], to: [104, 300] },
-  // cadera
-  { c1: [106, 330], c2: [96, 352], to: [98, 380] },
+  { c1: [82, 244], c2: [88, 212], to: [92, 188] },
+  // costado del tórax hasta la cintura
+  { c1: [94, 224], c2: [102, 268], to: [108, 300] },
+  // cintura y cadera
+  { c1: [110, 326], c2: [100, 346], to: [100, 376] },
   // muslo hasta la rodilla
-  { c1: [100, 420], c2: [106, 452], to: [112, 480] },
-  // pantorrilla
-  { c1: [114, 500], c2: [122, 530], to: [118, 560] },
-  // tobillo
-  { c1: [117, 580], c2: [118, 596], to: [118, 604] },
-  // talón y empeine
-  { c1: [116, 612], c2: [108, 622], to: [114, 628] },
+  { c1: [102, 420], c2: [110, 460], to: [114, 498] },
+  // pantorrilla hasta el tobillo
+  { c1: [116, 530], c2: [124, 560], to: [120, 596] },
+  // talón
+  { c1: [119, 608], c2: [114, 618], to: [112, 626] },
   // dedos del pie y cara interna del pie
-  { c1: [120, 634], c2: [134, 634], to: [140, 626] },
+  { c1: [116, 636], c2: [138, 638], to: [142, 628] },
   // tobillo interno
-  { c1: [140, 618], c2: [138, 610], to: [138, 604] },
+  { c1: [142, 616], c2: [140, 606], to: [140, 596] },
   // pantorrilla y rodilla internas
-  { c1: [136, 570], c2: [132, 540], to: [136, 480] },
+  { c1: [138, 560], c2: [134, 530], to: [138, 498] },
   // muslo interno hasta la entrepierna
-  { c1: [138, 450], c2: [144, 428], to: [150, 412] },
+  { c1: [140, 466], c2: [146, 444], to: [150, 432] },
 ]
 
 /** Cabeza, tronco y extremidades en un solo trazo cerrado. */
-export const BODY_OUTLINE = symmetricPath([150, 10], LEFT_SIDE)
+export const BODY_OUTLINE = symmetricPath([150, 8], LEFT_SIDE)
 
 // --- Líneas decorativas (radiografía) -----------------------------------
 
 const LEFT_ANATOMY: string[] = [
   // clavícula
-  'M150 132 C134 128 112 132 92 146',
-  // costillas
-  ...[156, 172, 188, 204, 220, 236].map((y) => `M150 ${y} C136 ${y} 118 ${y + 6} 108 ${y + 20}`),
-  // cresta ilíaca
-  'M104 356 C112 376 128 392 150 398',
-  // vasos del brazo y de la pierna
-  'M110 150 C92 200 76 260 60 336',
-  'M152 340 C142 372 128 410 124 470 L122 596',
+  'M150 132 C130 126 104 130 80 142',
+  // costillas: del esternón hacia el costado
+  ...[150, 164, 178, 192, 206, 220].map((y) => `M150 ${y} C130 ${y - 4} 102 ${y + 6} 96 ${y + 24}`),
+  // costillas flotantes
+  'M150 234 C134 232 116 240 110 254',
+  // cresta ilíaca y ala de la pelvis
+  'M102 356 C106 386 122 398 138 410 C144 414 148 420 150 428',
+  'M112 404 C116 396 128 396 132 404',
+  // esternocleidomastoideo
+  'M138 100 C140 108 144 114 148 118',
   // pliegues del cerebro
-  'M132 42 C138 36 144 40 146 46',
-  'M126 58 C132 54 138 58 140 64',
+  'M132 40 C138 34 144 38 146 44',
+  'M126 56 C132 52 138 56 140 62',
   // asas intestinales
-  'M114 316 C130 306 146 326 162 316 C176 306 186 314 186 320',
-  'M114 340 C130 330 146 350 162 340 C176 330 186 338 186 344',
-  'M114 364 C130 354 146 374 162 364 C176 354 186 362 186 368',
+  'M114 322 C130 312 146 332 162 322 C176 312 186 320 186 326',
+  'M114 346 C130 336 146 356 162 346 C176 336 186 344 186 350',
+  'M114 370 C130 360 146 380 162 370 C176 360 186 368 186 374',
 ]
 
-/** Columna, clavículas, costillas, pelvis, vasos y pliegues. No son interactivas. */
+/** Columna, esternón, clavículas, costillas, pelvis y pliegues. No son interactivas. */
 export const ANATOMY_LINES: string[] = [
-  'M150 124 L150 400',
-  'M150 28 L150 78',
+  'M150 118 L150 430',
+  'M150 26 L150 76',
+  'M136 372 C142 380 158 380 164 372',
   ...LEFT_ANATOMY,
   ...LEFT_ANATOMY.map((d) => mirrorPath(d)),
+]
+
+const LEFT_VESSELS: string[] = [
+  // carótida
+  'M150 140 C146 128 144 110 142 98',
+  // subclavia, braquial y radial hasta la mano
+  'M150 150 C120 152 98 162 84 186 C70 222 60 282 52 350 C48 380 44 400 40 416',
+  'M52 350 C52 372 48 392 44 412',
+  // ramas coronarias y torácicas
+  'M150 178 C136 182 122 198 112 218',
+  // ilíaca y femoral hasta el pie
+  'M150 356 C136 380 122 420 118 470 C116 520 120 570 122 610',
+  'M150 356 C146 400 138 450 138 500',
+]
+
+/**
+ * Árbol vascular: aorta, carótidas, arterias de brazos y piernas. Se pinta
+ * con el color del nivel del sistema cardiovascular.
+ */
+export const VESSEL_LINES: string[] = [
+  'M150 176 L150 140',
+  'M152 236 L150 356',
+  ...LEFT_VESSELS,
+  ...LEFT_VESSELS.map((d) => mirrorPath(d)),
 ]
 
 // --- Regiones por sistema -------------------------------------------------
@@ -96,59 +129,59 @@ export interface RegionShape {
   systemId: BodySystemId
   /** Un `path` en coordenadas del viewBox. */
   d: string
-  /** Punto donde se ancla el rótulo del nivel. */
-  label: { x: number; y: number; anchor?: 'start' | 'middle' | 'end' }
+  /** Rótulo del nivel en el margen (`side`) y punto del órgano al que apunta la línea guía. */
+  label: { side: 'left' | 'right'; y: number; to: [number, number] }
 }
 
 const LEFT_LUNG =
-  'M136 152 C126 150 112 160 108 178 C104 202 104 232 110 254 C114 264 128 266 136 258 C139 240 140 200 136 152 Z'
+  'M140 150 C124 146 106 158 102 180 C96 210 98 244 104 266 C110 278 130 280 140 268 C144 240 144 200 140 150 Z'
 // El pulmón izquierdo del paciente (derecha del espectador) tiene la escotadura cardíaca.
 const RIGHT_LUNG =
-  'M164 152 C174 150 188 160 192 178 C196 202 196 232 190 254 C186 264 172 266 164 258 C160 240 162 222 172 208 C166 198 160 182 164 152 Z'
+  'M160 150 C176 146 194 158 198 180 C204 210 202 244 196 266 C190 278 170 280 162 268 C158 250 166 234 178 222 C168 208 160 190 160 150 Z'
 
-const LEFT_KIDNEY = 'M118 274 C108 274 104 288 106 300 C108 310 116 314 122 310 C118 300 118 288 122 278 C121 275 120 274 118 274 Z'
+const LEFT_KIDNEY = 'M118 286 C106 286 102 302 104 316 C106 328 116 332 122 328 C118 318 118 304 122 292 C121 288 120 286 118 286 Z'
 
-const LEFT_ARM = 'M70 178 C66 206 62 236 60 262 C56 290 52 320 50 344 L62 348 C68 322 74 294 78 268 C84 242 88 216 92 194 Z'
+const LEFT_ARM = 'M60 182 C56 210 50 240 48 272 C44 306 38 340 36 368 L56 370 C62 340 70 306 76 278 C82 246 88 214 90 192 Z'
 const LEFT_LEG =
-  'M102 394 C102 430 108 452 112 480 C114 500 120 530 118 560 C117 580 118 596 118 604 L138 604 C140 580 138 560 134 540 C132 520 134 500 136 480 C138 450 144 430 146 424 Z'
+  'M104 390 C104 430 110 462 114 498 C116 530 124 560 120 596 L140 596 C138 560 134 530 138 498 C140 466 146 444 148 434 C132 428 112 410 104 390 Z'
 
 export const REGION_SHAPES: RegionShape[] = [
   {
     systemId: 'nervous',
-    d: 'M150 26 C130 26 118 40 118 54 C118 68 130 80 150 80 C170 80 182 68 182 54 C182 40 170 26 150 26 Z',
-    label: { x: 150, y: 20, anchor: 'middle' },
+    d: 'M150 22 C130 22 118 38 118 52 C118 66 130 78 150 78 C170 78 182 66 182 52 C182 38 170 22 150 22 Z',
+    label: { side: 'right', y: 50, to: [180, 50] },
   },
   {
     systemId: 'endocrine',
     // tiroides en forma de mariposa
-    d: 'M138 120 C142 116 148 120 150 126 C152 120 158 116 162 120 C164 126 160 134 154 134 C152 132 148 132 146 134 C140 134 136 126 138 120 Z',
-    label: { x: 176, y: 126, anchor: 'start' },
+    d: 'M138 114 C142 110 148 114 150 120 C152 114 158 110 162 114 C164 120 160 128 154 128 C152 126 148 126 146 128 C140 128 136 120 138 114 Z',
+    label: { side: 'right', y: 120, to: [162, 120] },
   },
   {
     systemId: 'respiratory',
     d: joinPaths(LEFT_LUNG, RIGHT_LUNG),
-    label: { x: 236, y: 160, anchor: 'start' },
+    label: { side: 'left', y: 190, to: [102, 190] },
   },
   {
     systemId: 'cardiovascular',
     // corazón inclinado con el ápex hacia la izquierda del paciente
-    d: 'M150 178 C140 168 122 176 126 194 C130 210 148 224 160 236 C172 224 186 208 182 192 C178 178 162 170 150 178 Z',
-    label: { x: 236, y: 208, anchor: 'start' },
+    d: 'M150 182 C138 170 120 180 124 200 C128 218 148 232 162 248 C176 234 192 216 188 198 C184 182 164 172 150 182 Z',
+    label: { side: 'right', y: 210, to: [188, 206] },
   },
   {
     systemId: 'hepatic',
     // hígado en cuña bajo el pulmón derecho del paciente
-    d: 'M96 262 C104 250 130 250 154 256 C160 260 158 272 150 278 C130 290 106 288 96 278 C92 272 92 268 96 262 Z',
-    label: { x: 66, y: 268, anchor: 'end' },
+    d: 'M98 274 C106 260 132 260 156 266 C162 270 160 284 152 290 C132 302 108 300 98 290 C94 284 94 280 98 274 Z',
+    label: { side: 'left', y: 282, to: [98, 282] },
   },
   {
     systemId: 'digestive',
     // estómago y marco intestinal
     d: joinPaths(
-      'M156 254 C170 248 190 256 190 272 C190 288 172 296 160 290 C154 286 152 278 154 270 C152 262 154 258 156 254 Z',
-      'M112 300 C110 292 120 290 128 292 L172 292 C180 290 190 292 188 300 L190 372 C190 384 180 388 168 386 L132 386 C120 388 110 384 110 372 Z',
+      'M158 262 C172 256 194 264 194 282 C194 298 176 306 164 300 C158 296 156 288 158 280 C156 272 158 266 158 262 Z',
+      'M114 308 C112 300 122 298 130 300 L170 300 C178 298 188 300 186 308 L188 388 C188 400 178 404 166 402 L134 402 C122 404 112 400 112 388 Z',
     ),
-    label: { x: 236, y: 300, anchor: 'start' },
+    label: { side: 'right', y: 300, to: [192, 292] },
   },
   {
     systemId: 'renal',
@@ -156,18 +189,18 @@ export const REGION_SHAPES: RegionShape[] = [
     d: joinPaths(
       LEFT_KIDNEY,
       mirrorPath(LEFT_KIDNEY),
-      'M150 392 C138 392 134 400 138 408 C142 414 158 414 162 408 C166 400 162 392 150 392 Z',
+      'M150 404 C138 404 134 412 138 420 C142 426 158 426 162 420 C166 412 162 404 150 404 Z',
     ),
-    label: { x: 66, y: 296, anchor: 'end' },
+    label: { side: 'left', y: 318, to: [104, 316] },
   },
   {
     systemId: 'reproductive',
-    d: 'M132 414 C140 410 160 410 168 414 C170 424 162 440 150 442 C138 440 130 424 132 414 Z',
-    label: { x: 236, y: 428, anchor: 'start' },
+    d: 'M134 430 C142 426 158 426 166 430 C168 440 160 454 150 456 C140 454 132 440 134 430 Z',
+    label: { side: 'right', y: 440, to: [166, 440] },
   },
   {
     systemId: 'musculoskeletal',
     d: joinPaths(LEFT_ARM, mirrorPath(LEFT_ARM), LEFT_LEG, mirrorPath(LEFT_LEG)),
-    label: { x: 150, y: 520, anchor: 'middle' },
+    label: { side: 'left', y: 520, to: [116, 520] },
   },
 ]

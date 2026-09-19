@@ -5,8 +5,8 @@ import { Legend } from './Legend'
 import { SystemChip } from './SystemChip'
 import { SystemRegion } from './SystemRegion'
 import { SystemTooltip, type TooltipPosition } from './SystemTooltip'
-import { ANATOMY_LINES, BODY_OUTLINE, REGION_SHAPES, VIEW_BOX } from './bodyRegions'
-import { GLOW_FILTER_ID, NO_DATA_PATTERN_ID } from './levelStyles'
+import { ANATOMY_LINES, BODY_OUTLINE, REGION_SHAPES, VESSEL_LINES, VIEW_BOX } from './bodyRegions'
+import { GLOW_FILTER_ID, LEVEL_STYLES, NO_DATA_PATTERN_ID } from './levelStyles'
 import './BodyMap.css'
 
 interface BodyMapProps {
@@ -39,7 +39,7 @@ export function BodyMap({ bodyState, selectedSystemId, onSelect }: BodyMapProps)
     <div className="body-map" ref={containerRef}>
       <svg
         className="body-map__svg"
-        viewBox={`0 0 ${VIEW_BOX.width} ${VIEW_BOX.height}`}
+        viewBox={`${VIEW_BOX.x} ${VIEW_BOX.y} ${VIEW_BOX.width} ${VIEW_BOX.height}`}
         role="group"
         aria-label="Silueta del cuerpo con el nivel de afectación de cada sistema"
       >
@@ -60,13 +60,29 @@ export function BodyMap({ bodyState, selectedSystemId, onSelect }: BodyMapProps)
             <stop offset="0%" stopColor="#0f5468" />
             <stop offset="100%" stopColor="#041c26" />
           </radialGradient>
+          {/* Cuerpo translúcido, más brillante hacia los bordes para dar volumen. */}
+          <radialGradient id="body-fill" cx="50%" cy="35%" r="55%">
+            <stop offset="0%" stopColor="rgba(79, 214, 255, 0.04)" />
+            <stop offset="70%" stopColor="rgba(79, 214, 255, 0.1)" />
+            <stop offset="100%" stopColor="rgba(79, 214, 255, 0.26)" />
+          </radialGradient>
         </defs>
-        <rect width={VIEW_BOX.width} height={VIEW_BOX.height} fill="url(#body-map-bg)" rx="12" />
+        <rect x={VIEW_BOX.x} y={VIEW_BOX.y} width={VIEW_BOX.width} height={VIEW_BOX.height} fill="url(#body-map-bg)" rx="12" />
         <g className="body-map__outline" filter={`url(#${GLOW_FILTER_ID})`} aria-hidden="true">
-          <path d={BODY_OUTLINE} />
+          <path d={BODY_OUTLINE} fill="url(#body-fill)" />
         </g>
         <g className="body-map__anatomy" aria-hidden="true">
           {ANATOMY_LINES.map((d) => (
+            <path key={d} d={d} />
+          ))}
+        </g>
+        <g
+          className="body-map__vessels"
+          stroke={LEVEL_STYLES[bodyState.systems.cardiovascular.level].stroke}
+          filter={`url(#${GLOW_FILTER_ID})`}
+          aria-hidden="true"
+        >
+          {VESSEL_LINES.map((d) => (
             <path key={d} d={d} />
           ))}
         </g>

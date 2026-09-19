@@ -1,4 +1,4 @@
-import { ANATOMY_LINES, BODY_OUTLINE, REGION_SHAPES } from './bodyRegions'
+import { ANATOMY_LINES, BODY_OUTLINE, REGION_SHAPES, VESSEL_LINES } from './bodyRegions'
 
 // Un path SVG mal formado no rompe la aplicación, solo deja de dibujarse y
 // escribe un error en consola; esta prueba lo detecta antes.
@@ -39,6 +39,7 @@ describe('geometría de la silueta', () => {
 
   it('las líneas anatómicas están bien formadas', () => {
     for (const d of ANATOMY_LINES) assertWellFormed(d)
+    for (const d of VESSEL_LINES) assertWellFormed(d)
   })
 
   it('cada región tiene un path bien formado', () => {
