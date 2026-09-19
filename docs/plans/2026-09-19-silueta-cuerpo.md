@@ -97,7 +97,7 @@ Contexto técnico:
 - **Detalles**: estado `{ status: 'idle' | 'loading' | 'ready' | 'error', error?, patient?, encounters: EncounterRecord[], selectedEncounterId?, selectedSystemId? }`. Al cargar: si algún Bundle falla la validación, estado `error` y no se muestra nada parcial; si los `Patient.identifier` difieren, error "Los archivos pertenecen a pacientes distintos". `bodyState` se deriva con `useMemo` de la atención seleccionada. Por defecto se selecciona la atención más reciente por `period.start`.
 - **Depende de**: Tarea 4, Tarea 6.
 - **Verificación**: pruebas del reducer/hook: carga válida selecciona la más reciente; archivo inválido → error sin datos parciales; pacientes distintos → error; cambiar atención recalcula `bodyState`.
-- [ ] Hecha
+- [x] Hecha (2026-09-19; reducer puro en `historyReducer.ts`, hook `usePatientHistory` deriva `record` y `bodyState` con `useMemo`; lectura de archivos con `FileReader` para que funcione también en jsdom)
 
 ### Tarea 8 — Pantalla de carga y encabezado del paciente
 - **Qué**: pantalla inicial con selector de archivos (múltiple) y lista de pacientes de ejemplo; encabezado con nombre, edad, sexo e identificación; indicador "Viendo: tipo · fecha · prestador"; alerta de triage; etiqueta "Reglas pendientes de validación clínica"; mensajes de carga y de error.
