@@ -101,6 +101,7 @@ Semáforo de 4 niveles, siempre acompañado de texto o ícono (no depender solo 
 - **Stack (prototipo)**: **React 19 + TypeScript + Vite 8**, todo en el navegador (sin backend). Pruebas con **Vitest 5** + Testing Library (jsdom); lint con **oxlint** (el que trae la plantilla de Vite). Tipos FHIR con `@types/fhir`. Silueta en **SVG propio**. Backend, autenticación y auditoría se agregarán cuando se salga de datos sintéticos.
 - **Capas en `src/`**: `domain/` (tipos del dominio), `fhir/` (lectura y validación de Bundles), `rules/` (mapeos, configuración y cálculo de nivel como funciones puras, para poder moverlas a un backend después), `state/` (estado de la aplicación), `components/` (silueta, panel, selector, encabezado), `data/examples/` (Bundles sintéticos), `test/` (setup de pruebas).
 - **Comandos**: `npm run dev` (servidor en http://localhost:5173), `npm run build`, `npm test` (Vitest, una pasada), `npm run test:watch`, `npm run lint`. En Claude Code el servidor se levanta con la configuración `visor` de `.claude/launch.json`.
+- **Datos sintéticos**: `node scripts/generate-examples.mjs` regenera los Bundles de `src/data/examples/` (editar el script, no los JSON). Códigos y perfiles verificados en `docs/reference/rda-codes.md`.
 
 ## Decisiones tomadas
 

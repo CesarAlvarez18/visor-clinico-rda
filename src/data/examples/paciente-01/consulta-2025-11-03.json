@@ -1,0 +1,511 @@
+{
+  "resourceType": "Bundle",
+  "id": "bundle-enc-p1-2025-11-03",
+  "meta": {
+    "profile": [
+      "https://fhir.minsalud.gov.co/rda/StructureDefinition/BundleAmbulatoryRDA"
+    ]
+  },
+  "identifier": {
+    "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/RDA",
+    "value": "RDA-P1-0001"
+  },
+  "type": "document",
+  "timestamp": "2025-11-03T09:00:00-05:00",
+  "entry": [
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Composition/comp-enc-p1-2025-11-03",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "comp-enc-p1-2025-11-03",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/CompositionAmbulatoryRDA"
+          ]
+        },
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "60591-5",
+              "display": "Patient summary Document"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pac-999999001"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p1-2025-11-03"
+        },
+        "date": "2025-11-03T09:00:00-05:00",
+        "author": [
+          {
+            "reference": "Practitioner/prac-999000001"
+          }
+        ],
+        "title": "RDA Consulta",
+        "custodian": {
+          "reference": "Organization/org-990000001"
+        },
+        "section": [
+          {
+            "title": "Entidad(es) responsable(s) por el plan de beneficios en salud",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "48768-6"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "Organization/org-eapb-990000009"
+              }
+            ]
+          },
+          {
+            "title": "Otros datos demográficos",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "74208-0"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Datos incapacidad (SIPE – Sistema de Incapacidades y Prestaciones Economicas)",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "105583-9"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Historial de medicamentos",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "10160-0"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Historial de alergias, intolerancias y reacciones adversas",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "48765-2"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Historial de diagnósticos de problemas de salud",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "11450-4"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "Condition/cond-p1-i10-2025"
+              }
+            ]
+          },
+          {
+            "title": "Factores de riesgo",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "75492-9"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Órdenes, prescripciones o solicitudes de servicio",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "61146-1"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Documentos de soporte",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "55107-7"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Patient/pac-999999001",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pac-999999001",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/PatientRDA"
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://fhir.minsalud.gov.co/rda/StructureDefinition/ExtensionBiologicalGender",
+            "valueCoding": {
+              "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianGenderGroup",
+              "code": "01",
+              "display": "Hombre"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PN"
+                },
+                {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianPersonIdentifier",
+                  "code": "CC",
+                  "display": "Cédula de ciudadanía"
+                }
+              ]
+            },
+            "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/RNEC",
+            "value": "999999001"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Prueba Uno",
+            "given": [
+              "Paciente"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1962-04-15",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "city": "Medellín",
+            "country": "Colombia"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Encounter/enc-p1-2025-11-03",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-p1-2025-11-03",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/EncounterAmbulatoryRDA"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "usual",
+            "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/Encounters",
+            "value": "RDA-P1-0001"
+          }
+        ],
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianTechModality",
+                "code": "01",
+                "display": "Intramural"
+              }
+            ]
+          },
+          {
+            "coding": [
+              {
+                "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/GrupoServicios",
+                "code": "01",
+                "display": "Consulta externa"
+              }
+            ]
+          },
+          {
+            "coding": [
+              {
+                "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/EntornoAtencion",
+                "code": "05",
+                "display": "Institucional"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/pac-999999001"
+        },
+        "participant": [
+          {
+            "id": "AttenderPhysician",
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ]
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/prac-999000001"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-11-03T08:30:00-05:00",
+          "end": "2025-11-03T09:00:00-05:00"
+        },
+        "diagnosis": [
+          {
+            "id": "MainDiagnosis",
+            "extension": [
+              {
+                "url": "https://fhir.minsalud.gov.co/rda/StructureDefinition/ExtensionDiagnosisType",
+                "valueCoding": {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/RIPSTipoDiagnosticoPrincipalVersion2",
+                  "code": "03",
+                  "display": "Confirmado Repetido"
+                }
+              }
+            ],
+            "condition": {
+              "reference": "Condition/cond-p1-i10-2025"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianDiagnosisRole",
+                  "code": "8319008",
+                  "display": "diagnóstico primario"
+                }
+              ]
+            },
+            "rank": 1
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/org-990000001"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Practitioner/prac-999000001",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "prac-999000001",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/PractitionerRDA"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/RNEC",
+            "value": "999000001"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "General Ejemplo",
+            "given": [
+              "Médica"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Organization/org-990000001",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-990000001",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/CareDeliveryOrganizationRDA"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/NIT",
+            "value": "990000001"
+          }
+        ],
+        "name": "IPS Consulta Ejemplo"
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Organization/org-eapb-990000009",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-eapb-990000009",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/HealthBenefitPlanAdminOrganizationRDA"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/NIT",
+            "value": "990000009"
+          }
+        ],
+        "name": "EAPB Ejemplo"
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Condition/cond-p1-i10-2025",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-p1-i10-2025",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/ConditionRDA"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "I10",
+              "display": "Hipertensión esencial (primaria)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pac-999999001"
+        }
+      }
+    }
+  ]
+}

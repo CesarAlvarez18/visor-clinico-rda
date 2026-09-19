@@ -55,7 +55,7 @@ Contexto técnico:
   - Usar los códigos verificados en la Tarea 2. Fechas dentro del último año (restricción de la guía para `period`).
 - **Depende de**: Tarea 1, Tarea 2.
 - **Verificación**: prueba en `src/data/examples/examples.test.ts` que carga cada ejemplo y comprueba: `resourceType: Bundle`, `type: document`, primera entrada `Composition`, mismo `Patient.identifier` en los cuatro Bundles del paciente 1, y que cada `Condition` referenciado desde `Encounter.diagnosis` existe en el Bundle.
-- [ ] Hecha
+- [x] Hecha (2026-09-19; los JSON se generan con `scripts/generate-examples.mjs` para mantenerlos consistentes; `src/data/examples/README.md` documenta qué caso cubre cada archivo y las diferencias conocidas con los perfiles)
 
 ### Tarea 4 — Modelo de dominio y lectura del Bundle
 - **Qué**: tipos del dominio y función `parseBundle` que convierte un Bundle RDA en un `EncounterRecord` listo para las reglas, más `validateBundle` para rechazar archivos inválidos.

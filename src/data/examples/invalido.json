@@ -1,0 +1,13 @@
+{
+  "resourceType": "Bundle",
+  "id": "bundle-invalido",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pac-sin-documento"
+      }
+    }
+  ]
+}
