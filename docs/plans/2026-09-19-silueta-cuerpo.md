@@ -67,7 +67,7 @@ Contexto técnico:
   - `parseBundle`: resolver referencias por `fullUrl` o `ResourceType/id`; tomar los `Condition` desde `Encounter.diagnosis` (con `use` y `rank`) y también los que solo estén en `sectionProblems` (sin `use`); marcar `isActive` según `clinicalStatus` (`inactive`, `resolved`, `remission` → no activo); detectar `kind` por `Encounter.class` (`AMB`, `EMER`, `IMP`); extraer triage desde la `Observation` con código SNOMED `225390008`; calcular la edad a la fecha de la atención.
 - **Depende de**: Tarea 1, Tarea 3.
 - **Verificación**: pruebas unitarias con los cuatro Bundles de ejemplo (número de diagnósticos, `use` correcto, triage detectado, `Condition` solo en sección con `use` indefinido, `resolved` marcado como no activo) y con `invalido.json` (error legible).
-- [ ] Hecha
+- [x] Hecha (2026-09-19; `BundleIndex` en `src/fhir/references.ts` resuelve `fullUrl`, `Tipo/id`, URL absoluta e `id` a secas; `ageAt` en `src/domain/age.ts`)
 
 ### Tarea 5 — Configuración de reglas: CIE-10 → sistema y rol → nivel
 - **Qué**: los archivos de configuración de las reglas clínicas, marcados como pendientes de validación clínica, y las funciones para consultarlos.
