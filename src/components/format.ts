@@ -1,4 +1,4 @@
-import type { EncounterKind, Sex } from '../domain/types'
+import type { ClinicalStatus, EncounterKind, Sex } from '../domain/types'
 
 export const ENCOUNTER_KIND_LABELS: Record<EncounterKind, string> = {
   ambulatory: 'Consulta externa',
@@ -12,6 +12,16 @@ export const SEX_LABELS: Record<Sex, string> = {
   female: 'Femenino',
   other: 'Otro',
   unknown: 'Sexo no registrado',
+}
+
+export const CLINICAL_STATUS_LABELS: Record<ClinicalStatus, string> = {
+  active: 'Activo',
+  recurrence: 'Recurrencia',
+  relapse: 'Recaída',
+  inactive: 'Inactivo',
+  remission: 'En remisión',
+  resolved: 'Resuelto',
+  unknown: 'Estado no reconocido',
 }
 
 const dateFormatter = new Intl.DateTimeFormat('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })

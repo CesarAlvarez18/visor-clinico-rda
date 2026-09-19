@@ -2,7 +2,9 @@ import { BodyMap } from './components/BodyMap/BodyMap'
 import { BundleLoader } from './components/BundleLoader'
 import { PatientHeader } from './components/PatientHeader'
 import { RulesNotice } from './components/RulesNotice'
+import { SystemDetailPanel } from './components/SystemDetailPanel'
 import { TriageAlert } from './components/TriageAlert'
+import { UnmappedDiagnoses } from './components/UnmappedDiagnoses'
 import { ViewingIndicator } from './components/ViewingIndicator'
 import { usePatientHistory } from './state/usePatientHistory'
 import './App.css'
@@ -25,6 +27,8 @@ export default function App() {
     )
   }
 
+  const selectedSystem = state.selectedSystemId ? bodyState.systems[state.selectedSystemId] : undefined
+
   return (
     <main className="app">
       <PatientHeader patient={record.patient} ageAtEncounter={record.ageAtEncounter} onReset={history.reset} />
@@ -38,9 +42,15 @@ export default function App() {
         </p>
       )}
       <RulesNotice />
-      <section className="app__body" aria-label="Silueta del cuerpo">
-        <BodyMap bodyState={bodyState} selectedSystemId={state.selectedSystemId} onSelect={history.selectSystem} />
-      </section>
+      <div className={`app__main${selectedSystem ? ' app__main--with-panel' : ''}`}>
+        <section className="app__body" aria-label="Silueta del cuerpo">
+          <BodyMap bodyState={bodyState} selectedSystemId={state.selectedSystemId} onSelect={history.selectSystem} />
+          <UnmappedDiagnoses diagnoses={bodyState.unmapped} />
+        </section>
+        {selectedSystem && (
+          <SystemDetailPanel state={selectedSystem} encounter={record.encounter} onClose={() => history.selectSystem(undefined)} />
+        )}
+      </div>
     </main>
   )
 }

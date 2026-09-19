@@ -128,7 +128,7 @@ Contexto técnico:
 - **Detalles**: botón cerrar y tecla Escape cierran; cambiar de sistema con el panel abierto lo actualiza; texto "registrado en la atención del …" junto a la fecha; nota "Se muestra solo lo registrado en esta atención". Diagnósticos no activos en gris con "no activo". Sin datos: "No hay diagnósticos asociados a este sistema en esta atención".
 - **Depende de**: Tarea 6, Tarea 9.
 - **Verificación**: pruebas: la causa está destacada; "rol no registrado" aparece para diagnósticos sin `use`; resolved aparece como "no activo"; Escape cierra; la lista de sin mapeo muestra `Z00.0`.
-- [ ] Hecha
+- [x] Hecha (2026-09-19; "Diagnósticos sin sistema asignado" se muestra siempre bajo la silueta, no solo dentro del panel; al abrir o cambiar de sistema el foco va al título del panel)
 
 ### Tarea 11 — Selector de atención e integración final
 - **Qué**: componente `EncounterSelector` (lista por fecha descendente con tipo, fecha y prestador) y el ensamblaje de todo en `App.tsx` con el layout de escritorio/tablet (silueta al centro, panel a la derecha, encabezado arriba).
