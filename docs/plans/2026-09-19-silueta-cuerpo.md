@@ -43,7 +43,7 @@ Contexto técnico:
 - **Detalles**: revisar `StructureDefinition-EncounterAmbulatoryRDA`, `-EncounterEmergencyRDA`, `-EncounterHospitalizationRDA`, la extensión de tipo de diagnóstico, `CodeSystem-ClaseTriage` y los ejemplos de `Encounter` y `Bundle` de la guía. Registrar sistema, códigos y display, con el enlace a la página fuente. Si un código no se puede confirmar, anotarlo como "por confirmar".
 - **Depende de**: ninguna.
 - **Verificación**: el documento lista, con URL de origen, los códigos de `use`, tipo de diagnóstico, clase/tipo de `Encounter` y triage.
-- [ ] Hecha
+- [x] Hecha (2026-09-19; `docs/reference/rda-codes.md`. Hallazgos: `use` usa el CodeSystem propio `ColombianDiagnosisRole` con códigos SNOMED; el triage va en `sectionTriage` LOINC 54094-8; las referencias de los ejemplos oficiales son relativas sin tipo)
 
 ### Tarea 3 — Datos sintéticos: un paciente con cuatro atenciones
 - **Qué**: cuatro Bundles RDA sintéticos de un mismo paciente ficticio y un archivo inválido para pruebas de error.
