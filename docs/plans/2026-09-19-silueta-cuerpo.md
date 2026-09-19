@@ -88,7 +88,7 @@ Contexto técnico:
 - **Detalles**: para cada diagnóstico activo, `mapIcd10` → sistema; nivel aportado = máximo entre el nivel por rol y `minLevel` de la tabla; el sistema toma el máximo ("gana el peor") y `cause` es la evidencia que lo produjo (en empate, la de menor `rank`). Los diagnósticos no activos se incluyen en `evidence` con `contributedLevel: null` y `reason: 'no activo'`. Sistemas sin evidencia → `Level.NoData` (nunca `Normal` en v1). Diagnósticos sin mapeo → `unmapped[]`.
 - **Depende de**: Tarea 4, Tarea 5.
 - **Verificación**: pruebas unitarias que cubren CA-4 (sistema sin evidencia → Sin datos), CA-5 (comorbilidad + complicación → Grave con causa correcta), CA-6 (sin rol → Leve, "rol no registrado"), CA-7 (`minLevel` sobrescribe), CA-8 (resolved no cuenta pero aparece), CA-9 (sin mapeo → `unmapped`).
-- [ ] Hecha
+- [x] Hecha (2026-09-19; un sistema cuyo único diagnóstico está resuelto queda en "Sin datos" con la evidencia listada como "no activo")
 
 ### Tarea 7 — Estado de la aplicación y carga de Bundles
 - **Qué**: hook/estado que recibe archivos o ejemplos, valida, parsea, exige que todos sean del mismo paciente, ordena las atenciones por fecha descendente, y mantiene la atención y el sistema seleccionados.
