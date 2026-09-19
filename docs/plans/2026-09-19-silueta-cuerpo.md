@@ -79,7 +79,7 @@ Contexto técnico:
   - `mapIcd10(code)`: normaliza (`I10`, `I10.0`, `I100`) y devuelve `{ system, minLevel? } | undefined`.
 - **Depende de**: Tarea 1, Tarea 2.
 - **Verificación**: pruebas unitarias de `mapIcd10` (código dentro de rango, subcódigo con punto, código sin mapeo, `minLevel`) y de la tabla de roles (cada rol conocido, rol desconocido, sin rol).
-- [ ] Hecha
+- [x] Hecha (2026-09-19; los rangos específicos van antes que los capítulos y se aplica el primero que coincide)
 
 ### Tarea 6 — Motor de reglas: nivel por sistema con evidencia
 - **Qué**: función pura `computeBodyState(record: EncounterRecord): BodyState` que devuelve, por cada uno de los 12 sistemas, el nivel, la lista de evidencias y la causa principal, más la lista de diagnósticos sin sistema.
