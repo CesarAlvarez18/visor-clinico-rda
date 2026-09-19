@@ -21,8 +21,17 @@ export function LevelBadge({ level, x, y, anchor = 'middle' }: LevelBadgeProps) 
 
   return (
     <g className={`level-badge level-badge--${level}`} aria-hidden="true">
-      <rect x={left} y={y - HEIGHT / 2} width={width} height={HEIGHT} rx={HEIGHT / 2} fill={style.fill} stroke={style.stroke} strokeWidth={1} />
-      <text x={left + width / 2} y={y + 3.5} textAnchor="middle" fontSize={9} fontWeight={600} fill={style.text}>
+      <rect
+        x={left}
+        y={y - HEIGHT / 2}
+        width={width}
+        height={HEIGHT}
+        rx={HEIGHT / 2}
+        fill={style.badgeFill}
+        stroke={style.stroke}
+        strokeWidth={1}
+      />
+      <text x={left + width / 2} y={y + 3.5} textAnchor="middle" fontSize={9} fontWeight={600} fill={style.badgeText}>
         {text}
       </text>
     </g>

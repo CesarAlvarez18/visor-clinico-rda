@@ -4,7 +4,7 @@ import { LEVEL_LABELS } from '../../rules/levels'
 import type { SystemState } from '../../rules/types'
 import { LevelBadge } from './LevelBadge'
 import type { RegionShape } from './bodyRegions'
-import { LEVEL_STYLES } from './levelStyles'
+import { GLOW_FILTER_ID, LEVEL_STYLES } from './levelStyles'
 
 interface SystemRegionProps {
   shape: RegionShape
@@ -46,7 +46,13 @@ export function SystemRegion({ shape, state, selected, tooltipId, onSelect, onHo
       onBlur={leave}
     >
       <title>{label}</title>
-      <path d={shape.d} fill={style.fill} stroke={selected ? '#1d5c8a' : style.stroke} strokeWidth={selected ? 3 : 1.4} />
+      <path
+        d={shape.d}
+        fill={style.fill}
+        stroke={selected ? '#ffffff' : style.stroke}
+        strokeWidth={selected ? 2.5 : 1.2}
+        filter={`url(#${GLOW_FILTER_ID})`}
+      />
       <LevelBadge level={state.level} x={shape.label.x} y={shape.label.y} anchor={shape.label.anchor} />
     </g>
   )

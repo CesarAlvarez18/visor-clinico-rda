@@ -5,14 +5,64 @@ import type { BodySystemId } from '../../rules/config/bodySystems'
 
 export const VIEW_BOX = { width: 300, height: 640 }
 
-/** Contorno del cuerpo (cabeza, tronco, brazos y piernas). */
+/** Cabeza. */
+export const HEAD_OUTLINE =
+  'M150 12 C172 12 190 30 190 56 C190 82 172 100 150 100 C128 100 110 82 110 56 C110 30 128 12 150 12 Z'
+
+/** Cuello, tronco, brazos y piernas (lado izquierdo del espectador y luego el derecho, en espejo). */
 export const BODY_OUTLINE =
-  // cabeza
-  'M150 18 a40 44 0 1 0 0.01 0 Z ' +
-  // cuello + tronco + piernas
-  'M136 98 h28 v14 c30 4 52 14 60 30 l14 130 c-8 4 -14 4 -22 0 l-12 -90 v120 c4 60 4 110 -2 170 h-32 ' +
-  'l-4 -100 l-16 -60 l-16 60 l-4 100 h-32 c-6 -60 -6 -110 -2 -170 v-120 l-12 90 c-8 4 -14 4 -22 0 ' +
-  'l14 -130 c8 -16 30 -26 60 -30 Z'
+  'M136 112 ' +
+  'C120 116 96 124 86 140 ' + // hombro
+  'C74 160 74 210 68 258 ' + // brazo hasta el codo
+  'C64 292 58 330 54 366 ' + // antebrazo hasta la muñeca
+  'C52 380 66 384 70 372 ' + // mano
+  'C78 340 86 300 94 258 ' + // cara interna del antebrazo
+  'C98 236 100 210 102 190 ' + // cara interna del brazo hasta la axila
+  'C102 240 100 290 104 330 ' + // costado hasta la cintura
+  'C102 370 104 400 108 440 ' + // cadera y muslo
+  'C106 500 110 560 112 610 ' + // pierna hasta el tobillo
+  'C112 622 118 628 128 626 ' + // pie
+  'L138 626 ' +
+  'C140 580 140 520 138 470 ' + // cara interna de la pierna
+  'C140 450 146 436 150 428 ' + // entrepierna
+  'C154 436 160 450 162 470 ' +
+  'C160 520 160 580 162 626 ' +
+  'L172 626 ' +
+  'C182 628 188 622 188 610 ' +
+  'C190 560 194 500 192 440 ' +
+  'C196 400 198 370 196 330 ' +
+  'C200 290 198 240 198 190 ' +
+  'C200 210 202 236 206 258 ' +
+  'C214 300 222 340 230 372 ' +
+  'C234 384 248 380 246 366 ' +
+  'C242 330 236 292 232 258 ' +
+  'C226 210 226 160 214 140 ' +
+  'C204 124 180 116 164 112 Z'
+
+/**
+ * Líneas decorativas (columna, clavículas, costillas, pelvis y grandes
+ * vasos) para el aspecto de radiografía. No son interactivas.
+ */
+export const ANATOMY_LINES: string[] = [
+  // columna
+  'M150 112 L150 424',
+  // clavículas
+  'M150 122 C132 116 112 120 94 134',
+  'M150 122 C168 116 188 120 206 134',
+  // costillas
+  ...[150, 168, 186, 204, 222].flatMap((y) => [
+    `M150 ${y} C132 ${y} 110 ${y + 8} 102 ${y + 22}`,
+    `M150 ${y} C168 ${y} 190 ${y + 8} 198 ${y + 22}`,
+  ]),
+  // pelvis
+  'M104 346 C110 378 130 396 150 400 C170 396 190 378 196 346',
+  // vasos principales
+  'M150 212 L150 340',
+  'M150 340 C140 380 126 420 120 470 L116 600',
+  'M150 340 C160 380 174 420 180 470 L184 600',
+  'M122 146 C102 186 90 250 74 332',
+  'M178 146 C198 186 210 250 226 332',
+]
 
 export interface RegionShape {
   systemId: BodySystemId
@@ -76,11 +126,12 @@ export const REGION_SHAPES: RegionShape[] = [
     systemId: 'musculoskeletal',
     d:
       // brazo izquierdo del espectador
-      'M84 150 l-12 118 c-2 6 4 10 10 8 l16 -110 Z ' +
+      'M88 148 C80 176 76 220 70 262 L60 330 C66 338 76 336 80 326 L92 262 C96 236 98 210 100 186 Z ' +
       // brazo derecho del espectador
-      'M216 150 l12 118 c2 6 -4 10 -10 8 l-16 -110 Z ' +
+      'M212 148 C220 176 224 220 230 262 L240 330 C234 338 224 336 220 326 L208 262 C204 236 202 210 200 186 Z ' +
       // piernas
-      'M110 400 l-6 190 h28 l6 -160 l12 -30 Z M190 400 l6 190 h-28 l-6 -160 l-12 -30 Z',
+      'M110 442 C108 500 112 560 116 608 L134 608 C136 560 136 520 136 472 C134 458 126 448 110 442 Z ' +
+      'M190 442 C192 500 188 560 184 608 L166 608 C164 560 164 520 164 472 C166 458 174 448 190 442 Z',
     label: { x: 150, y: 540, anchor: 'middle' },
   },
 ]
