@@ -5,7 +5,7 @@ import { Legend } from './Legend'
 import { SystemChip } from './SystemChip'
 import { SystemRegion } from './SystemRegion'
 import { SystemTooltip, type TooltipPosition } from './SystemTooltip'
-import { ANATOMY_LINES, BODY_OUTLINE, HEAD_OUTLINE, REGION_SHAPES, VIEW_BOX } from './bodyRegions'
+import { ANATOMY_LINES, BODY_OUTLINE, REGION_SHAPES, VIEW_BOX } from './bodyRegions'
 import { GLOW_FILTER_ID, NO_DATA_PATTERN_ID } from './levelStyles'
 import './BodyMap.css'
 
@@ -63,7 +63,6 @@ export function BodyMap({ bodyState, selectedSystemId, onSelect }: BodyMapProps)
         </defs>
         <rect width={VIEW_BOX.width} height={VIEW_BOX.height} fill="url(#body-map-bg)" rx="12" />
         <g className="body-map__outline" filter={`url(#${GLOW_FILTER_ID})`} aria-hidden="true">
-          <path d={HEAD_OUTLINE} />
           <path d={BODY_OUTLINE} />
         </g>
         <g className="body-map__anatomy" aria-hidden="true">

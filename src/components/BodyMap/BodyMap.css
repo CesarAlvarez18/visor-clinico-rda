@@ -18,6 +18,7 @@
   padding: 16px;
   border-radius: 16px;
   background: radial-gradient(ellipse at 50% 30%, #0b4152 0%, var(--xray-bg) 60%, #031820 100%);
+  border: 1px solid var(--color-border);
   color: var(--xray-text);
 }
 

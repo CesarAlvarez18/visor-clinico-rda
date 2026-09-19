@@ -1,17 +1,21 @@
 :root {
-  --color-text: #1f2933;
-  --color-text-muted: #52606d;
-  --color-bg: #ffffff;
-  --color-surface: #f5f7fa;
-  --color-border: #d9e2ec;
-  --color-accent: #1d5c8a;
+  /* Tema oscuro tipo "radiografía": azul petróleo con acentos cian. */
+  --color-text: #e6f7fb;
+  --color-text-muted: #9ad9ea;
+  --color-bg: #041c26;
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --color-surface-strong: #0a2e3c;
+  --color-border: rgba(79, 214, 255, 0.3);
+  --color-accent: #4fd6ff;
+  --color-accent-text: #041c26;
+  --color-focus: #ffffff;
 
   --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
 
   font: 16px/1.5 var(--font-sans);
   color: var(--color-text);
   background: var(--color-bg);
-  color-scheme: light;
+  color-scheme: dark;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -22,6 +26,7 @@
 body {
   margin: 0;
   min-height: 100svh;
+  background: radial-gradient(ellipse at 50% 0%, #0b4152 0%, var(--color-bg) 55%, #02141b 100%) fixed;
 }
 
 h1,
@@ -30,10 +35,15 @@ h3 {
   margin: 0;
   font-weight: 600;
   line-height: 1.2;
+  color: #ffffff;
+}
+
+a {
+  color: var(--color-accent);
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
 

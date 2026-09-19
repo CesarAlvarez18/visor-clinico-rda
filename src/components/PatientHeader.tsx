@@ -29,7 +29,7 @@ export function PatientHeader({ patient, ageAtEncounter, onReset }: PatientHeade
           )}
         </p>
       </div>
-      <button type="button" className="patient-header__reset" onClick={onReset}>
+      <button type="button" className="button-secondary patient-header__reset" onClick={onReset}>
         Cargar otro paciente
       </button>
     </header>

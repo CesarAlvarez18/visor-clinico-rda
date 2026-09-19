@@ -44,7 +44,7 @@ export function BundleLoader({ loading, error, onLoadFiles, onLoadExample }: Bun
         <ul>
           {examplePatients.map((patient) => (
             <li key={patient.id}>
-              <button type="button" disabled={loading} onClick={() => onLoadExample(patient)}>
+              <button type="button" className="button-primary" disabled={loading} onClick={() => onLoadExample(patient)}>
                 {patient.label}
               </button>
               <span className="loader__description">{patient.description}</span>
