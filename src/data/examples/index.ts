@@ -30,6 +30,12 @@ export const examplePatients: ExamplePatient[] = [
     description: 'Mujer de 35 años con una consulta por infección respiratoria. Una atención.',
     files: ['./paciente-02/consulta-2026-05-02.json'],
   },
+  {
+    id: 'paciente-03',
+    label: 'Mateo Quintero Restrepo (UCI-DEMO-042)',
+    description: 'Hombre de 58 años en UCI por choque séptico de origen pulmonar (neumonía neumocócica). Una hospitalización en curso.',
+    files: ['./paciente-03/hospitalizacion-uci-2026-09-12.json'],
+  },
 ]
 
 export async function loadExampleBundles(patient: ExamplePatient): Promise<Bundle[]> {

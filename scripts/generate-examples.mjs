@@ -105,6 +105,18 @@ const patients = {
     biologicalSex: { code: '02', display: 'Mujer' },
     birthDate: '1990-09-30',
   },
+  // Copia codificada del caso de demostración UCI-DEMO-042. El caso solo da la
+  // edad (58 años): la fecha de nacimiento es aproximada (1 de enero del año
+  // que corresponde), no un dato del caso.
+  p3: {
+    id: 'pac-uci-demo-042',
+    document: 'UCI-DEMO-042',
+    given: ['Mateo'],
+    family: 'Quintero Restrepo',
+    gender: 'male',
+    biologicalSex: { code: '01', display: 'Hombre' },
+    birthDate: '1968-01-01',
+  },
 }
 
 const practitioners = {
@@ -116,6 +128,7 @@ const practitioners = {
 const organizations = {
   ips: { id: 'org-990000001', nit: '990000001', name: 'IPS Consulta Ejemplo' },
   hospital: { id: 'org-990000002', nit: '990000002', name: 'Hospital San Ejemplo' },
+  clinicaNorte: { id: 'org-990000003', nit: '990000003', name: 'Clínica Ficticia del Norte' },
   eapb: { id: 'org-eapb-990000009', nit: '990000009', name: 'EAPB Ejemplo' },
 }
 
@@ -229,7 +242,7 @@ function buildEncounter(enc, kind, patient, practitioner, organization) {
     id: enc.id,
     meta: { profile: [`${SD}/Encounter${kind.profileSuffix}RDA`] },
     identifier: [{ use: 'usual', system: `${RDA}/NamingSystem/Encounters`, value: enc.identifier }],
-    status: 'finished',
+    status: enc.status ?? 'finished',
     class: { system: ACT_CODE, ...kind.class },
     type: [
       { coding: [{ system: `${CS}/ColombianTechModality`, code: '01', display: 'Intramural' }] },
@@ -237,7 +250,8 @@ function buildEncounter(enc, kind, patient, practitioner, organization) {
       { coding: [{ system: `${CS}/EntornoAtencion`, code: '05', display: 'Institucional' }] },
     ],
     subject: ref('Patient', patient.id),
-    participant: [
+    // Sin profesional identificado (atención en curso) no hay participante.
+    participant: practitioner && [
       {
         id: kind.participant.id,
         type: [{ coding: [{ system: PARTICIPATION, code: kind.participant.code, display: kind.participant.display }] }],
@@ -272,12 +286,12 @@ function buildComposition(enc, kind, patient, practitioner, organization, condit
     resourceType: 'Composition',
     id: `comp-${enc.id}`,
     meta: { profile: [`${SD}/Composition${kind.profileSuffix}RDA`] },
-    status: 'final',
+    status: enc.status === 'in-progress' ? 'preliminary' : 'final',
     type: { coding: [{ system: LOINC, code: '60591-5', display: 'Patient summary Document' }] },
     subject: ref('Patient', patient.id),
     encounter: ref('Encounter', enc.id),
-    date: enc.end,
-    author: [ref('Practitioner', practitioner.id)],
+    date: enc.end ?? enc.documentDate,
+    author: [practitioner ? ref('Practitioner', practitioner.id) : ref('Organization', organization.id)],
     title: kind.title,
     custodian: ref('Organization', organization.id),
     section: sections,
@@ -298,7 +312,7 @@ function buildBundle(enc) {
     composition,
     buildPatient(patient),
     encounter,
-    buildPractitioner(practitioner),
+    ...(practitioner ? [buildPractitioner(practitioner)] : []),
     buildOrganization(organization, 'CareDeliveryOrganizationRDA'),
     buildOrganization(organizations.eapb, 'HealthBenefitPlanAdminOrganizationRDA'),
     ...conditions,
@@ -311,7 +325,7 @@ function buildBundle(enc) {
     meta: { profile: [`${SD}/Bundle${kind.profileSuffix}RDA`] },
     identifier: { system: `${RDA}/NamingSystem/RDA`, value: enc.identifier },
     type: 'document',
-    timestamp: enc.end,
+    timestamp: enc.end ?? enc.documentDate,
     entry: resources.map(entry),
   }
 }
@@ -402,6 +416,37 @@ const encounters = [
       { sliceId: 'Comorbidity-2', id: 'cond-p1-z00-ctrl', code: 'Z00.0', display: 'Examen médico general', role: 'comorbidity', rank: 3, type: DX_TYPE.confirmedNew },
       { id: 'cond-p1-f32-ctrl', code: 'F32.1', display: 'Episodio depresivo moderado', type: DX_TYPE.impression },
     ],
+  },
+  // Paciente 3: copia codificada del caso de demostración UCI-DEMO-042 (choque
+  // séptico por neumonía neumocócica, día 2 de UCI). El original traía los
+  // diagnósticos solo como texto y sin Encounter.diagnosis, y el visor lo
+  // mostraba todo en "Sin datos". CIE-10 y roles asignados para el prototipo,
+  // PENDIENTES DE VALIDACIÓN CLÍNICA. Sigue hospitalizado: atención
+  // "in-progress", sin egreso ni profesional identificado. Medicamentos,
+  // laboratorios, procedimientos y alergia del original no se copian: el visor
+  // v1 no los lee y venían sin CUPS/CUM.
+  {
+    file: 'paciente-03/hospitalizacion-uci-2026-09-12.json',
+    id: 'enc-p3-2026-09-12',
+    identifier: 'RDA-HOSP-UCI-DEMO-042',
+    kind: 'hospitalization',
+    status: 'in-progress',
+    patient: 'p3',
+    organization: 'clinicaNorte',
+    start: '2026-09-12T03:40:00-05:00',
+    documentDate: '2026-09-13T18:00:00-05:00',
+    diagnoses: [
+      { sliceId: 'AdmissionDiagnosis', id: 'cond-p3-j13', code: 'J13', display: 'Neumonía debida a Streptococcus pneumoniae', role: 'admission', rank: 1, type: DX_TYPE.confirmedNew },
+      { sliceId: 'ComplicationDiagnosis-1', id: 'cond-p3-a403', code: 'A40.3', display: 'Septicemia debida a Streptococcus pneumoniae', role: 'complication', rank: 2, type: DX_TYPE.confirmedNew },
+      { sliceId: 'ComplicationDiagnosis-2', id: 'cond-p3-j80', code: 'J80', display: 'Síndrome de dificultad respiratoria del adulto', role: 'complication', rank: 3, type: DX_TYPE.confirmedNew },
+      { sliceId: 'ComplicationDiagnosis-3', id: 'cond-p3-n179', code: 'N17.9', display: 'Insuficiencia renal aguda, no especificada', role: 'complication', rank: 4, type: DX_TYPE.confirmedNew },
+      { sliceId: 'Comorbidity-1', id: 'cond-p3-e119', code: 'E11.9', display: 'Diabetes mellitus no insulinodependiente, sin mención de complicación', role: 'comorbidity', rank: 5, type: DX_TYPE.confirmedRepeat },
+      // "Trombocitopenia en estudio": solo en la sección, sin rol.
+      { id: 'cond-p3-d696', code: 'D69.6', display: 'Trombocitopenia no especificada', type: DX_TYPE.impression },
+    ],
+    hospitalization: {
+      admitSource: { coding: [{ system: `${CS}/ViaIngreso`, code: '03', display: 'DERIVADO DE URGENCIAS' }] },
+    },
   },
   // Paciente distinto, para la prueba de "no mezclar pacientes" (CA-3)
   {

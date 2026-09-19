@@ -1,0 +1,843 @@
+{
+  "resourceType": "Bundle",
+  "id": "bundle-enc-p3-2026-09-12",
+  "meta": {
+    "profile": [
+      "https://fhir.minsalud.gov.co/rda/StructureDefinition/BundleHospitalizationRDA"
+    ]
+  },
+  "identifier": {
+    "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/RDA",
+    "value": "RDA-HOSP-UCI-DEMO-042"
+  },
+  "type": "document",
+  "timestamp": "2026-09-13T18:00:00-05:00",
+  "entry": [
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Composition/comp-enc-p3-2026-09-12",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "comp-enc-p3-2026-09-12",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/CompositionHospitalizationRDA"
+          ]
+        },
+        "status": "preliminary",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "60591-5",
+              "display": "Patient summary Document"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pac-uci-demo-042"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-p3-2026-09-12"
+        },
+        "date": "2026-09-13T18:00:00-05:00",
+        "author": [
+          {
+            "reference": "Organization/org-990000003"
+          }
+        ],
+        "title": "RDA Hospitalización",
+        "custodian": {
+          "reference": "Organization/org-990000003"
+        },
+        "section": [
+          {
+            "title": "Entidad(es) responsable(s) por el plan de beneficios en salud",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "48768-6"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "Organization/org-eapb-990000009"
+              }
+            ]
+          },
+          {
+            "title": "Otros datos demográficos",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "74208-0"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Datos incapacidad (SIPE – Sistema de Incapacidades y Prestaciones Economicas)",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "105583-9"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Historial de medicamentos",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "10160-0"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Historial de alergias, intolerancias y reacciones adversas",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "48765-2"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Historial de diagnósticos de problemas de salud",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "11450-4"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "Condition/cond-p3-j13"
+              },
+              {
+                "reference": "Condition/cond-p3-a403"
+              },
+              {
+                "reference": "Condition/cond-p3-j80"
+              },
+              {
+                "reference": "Condition/cond-p3-n179"
+              },
+              {
+                "reference": "Condition/cond-p3-e119"
+              },
+              {
+                "reference": "Condition/cond-p3-d696"
+              }
+            ]
+          },
+          {
+            "title": "Factores de riesgo",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "75492-9"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Historial de procedimientos",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "47519-4"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Resultados del uso de las tecnologías en salud",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Órdenes, prescripciones o solicitudes de servicio",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "61146-1"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Documentos de soporte",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "55107-7"
+                }
+              ]
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable",
+                  "display": "Unavailable"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Patient/pac-uci-demo-042",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pac-uci-demo-042",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/PatientRDA"
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://fhir.minsalud.gov.co/rda/StructureDefinition/ExtensionBiologicalGender",
+            "valueCoding": {
+              "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianGenderGroup",
+              "code": "01",
+              "display": "Hombre"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PN"
+                },
+                {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianPersonIdentifier",
+                  "code": "CC",
+                  "display": "Cédula de ciudadanía"
+                }
+              ]
+            },
+            "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/RNEC",
+            "value": "UCI-DEMO-042"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Quintero Restrepo",
+            "given": [
+              "Mateo"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1968-01-01",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "city": "Medellín",
+            "country": "Colombia"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Encounter/enc-p3-2026-09-12",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-p3-2026-09-12",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/EncounterHospitalizationRDA"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "usual",
+            "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/Encounters",
+            "value": "RDA-HOSP-UCI-DEMO-042"
+          }
+        ],
+        "status": "in-progress",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianTechModality",
+                "code": "01",
+                "display": "Intramural"
+              }
+            ]
+          },
+          {
+            "coding": [
+              {
+                "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/GrupoServicios",
+                "code": "03",
+                "display": "Internación"
+              }
+            ]
+          },
+          {
+            "coding": [
+              {
+                "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/EntornoAtencion",
+                "code": "05",
+                "display": "Institucional"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/pac-uci-demo-042"
+        },
+        "period": {
+          "start": "2026-09-12T03:40:00-05:00"
+        },
+        "diagnosis": [
+          {
+            "id": "AdmissionDiagnosis",
+            "extension": [
+              {
+                "url": "https://fhir.minsalud.gov.co/rda/StructureDefinition/ExtensionDiagnosisType",
+                "valueCoding": {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/RIPSTipoDiagnosticoPrincipalVersion2",
+                  "code": "02",
+                  "display": "Confirmado Nuevo"
+                }
+              }
+            ],
+            "condition": {
+              "reference": "Condition/cond-p3-j13"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianDiagnosisRole",
+                  "code": "52870002",
+                  "display": "diagnóstico de ingreso"
+                }
+              ]
+            },
+            "rank": 1
+          },
+          {
+            "id": "ComplicationDiagnosis-1",
+            "extension": [
+              {
+                "url": "https://fhir.minsalud.gov.co/rda/StructureDefinition/ExtensionDiagnosisType",
+                "valueCoding": {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/RIPSTipoDiagnosticoPrincipalVersion2",
+                  "code": "02",
+                  "display": "Confirmado Nuevo"
+                }
+              }
+            ],
+            "condition": {
+              "reference": "Condition/cond-p3-a403"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianDiagnosisRole",
+                  "code": "263718001",
+                  "display": "complicación"
+                }
+              ]
+            },
+            "rank": 2
+          },
+          {
+            "id": "ComplicationDiagnosis-2",
+            "extension": [
+              {
+                "url": "https://fhir.minsalud.gov.co/rda/StructureDefinition/ExtensionDiagnosisType",
+                "valueCoding": {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/RIPSTipoDiagnosticoPrincipalVersion2",
+                  "code": "02",
+                  "display": "Confirmado Nuevo"
+                }
+              }
+            ],
+            "condition": {
+              "reference": "Condition/cond-p3-j80"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianDiagnosisRole",
+                  "code": "263718001",
+                  "display": "complicación"
+                }
+              ]
+            },
+            "rank": 3
+          },
+          {
+            "id": "ComplicationDiagnosis-3",
+            "extension": [
+              {
+                "url": "https://fhir.minsalud.gov.co/rda/StructureDefinition/ExtensionDiagnosisType",
+                "valueCoding": {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/RIPSTipoDiagnosticoPrincipalVersion2",
+                  "code": "02",
+                  "display": "Confirmado Nuevo"
+                }
+              }
+            ],
+            "condition": {
+              "reference": "Condition/cond-p3-n179"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianDiagnosisRole",
+                  "code": "263718001",
+                  "display": "complicación"
+                }
+              ]
+            },
+            "rank": 4
+          },
+          {
+            "id": "Comorbidity-1",
+            "extension": [
+              {
+                "url": "https://fhir.minsalud.gov.co/rda/StructureDefinition/ExtensionDiagnosisType",
+                "valueCoding": {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/RIPSTipoDiagnosticoPrincipalVersion2",
+                  "code": "03",
+                  "display": "Confirmado Repetido"
+                }
+              }
+            ],
+            "condition": {
+              "reference": "Condition/cond-p3-e119"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ColombianDiagnosisRole",
+                  "code": "398192003",
+                  "display": "comorbilidades"
+                }
+              ]
+            },
+            "rank": 5
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/org-990000003"
+        },
+        "hospitalization": {
+          "admitSource": {
+            "coding": [
+              {
+                "system": "https://fhir.minsalud.gov.co/rda/CodeSystem/ViaIngreso",
+                "code": "03",
+                "display": "DERIVADO DE URGENCIAS"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Organization/org-990000003",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-990000003",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/CareDeliveryOrganizationRDA"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/NIT",
+            "value": "990000003"
+          }
+        ],
+        "name": "Clínica Ficticia del Norte"
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Organization/org-eapb-990000009",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-eapb-990000009",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/HealthBenefitPlanAdminOrganizationRDA"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://fhir.minsalud.gov.co/rda/NamingSystem/NIT",
+            "value": "990000009"
+          }
+        ],
+        "name": "EAPB Ejemplo"
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Condition/cond-p3-j13",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-p3-j13",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/ConditionRDA"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "J13",
+              "display": "Neumonía debida a Streptococcus pneumoniae"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pac-uci-demo-042"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Condition/cond-p3-a403",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-p3-a403",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/ConditionRDA"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "A40.3",
+              "display": "Septicemia debida a Streptococcus pneumoniae"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pac-uci-demo-042"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Condition/cond-p3-j80",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-p3-j80",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/ConditionRDA"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "J80",
+              "display": "Síndrome de dificultad respiratoria del adulto"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pac-uci-demo-042"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Condition/cond-p3-n179",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-p3-n179",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/ConditionRDA"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "N17.9",
+              "display": "Insuficiencia renal aguda, no especificada"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pac-uci-demo-042"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Condition/cond-p3-e119",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-p3-e119",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/ConditionRDA"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "E11.9",
+              "display": "Diabetes mellitus no insulinodependiente, sin mención de complicación"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pac-uci-demo-042"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://ejemplo.visor-rda.test/fhir/Condition/cond-p3-d696",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-p3-d696",
+        "meta": {
+          "profile": [
+            "https://fhir.minsalud.gov.co/rda/StructureDefinition/ConditionRDA"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "D69.6",
+              "display": "Trombocitopenia no especificada"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pac-uci-demo-042"
+        }
+      }
+    }
+  ]
+}
