@@ -106,7 +106,7 @@ Contexto técnico:
 - **Detalles**: `TriageAlert` muestra "Triage II · Emergencia" con color + texto y nota si la atención no es de urgencias. Aviso "Esta atención no registra diagnósticos" cuando la lista está vacía. Texto de interfaz en español.
 - **Depende de**: Tarea 7.
 - **Verificación**: pruebas con Testing Library: cargar ejemplo muestra encabezado y "Viendo"; archivo inválido muestra error; urgencias muestra triage y consulta no.
-- [ ] Hecha
+- [x] Hecha (2026-09-19; las fechas sin hora se formatean en UTC para que no retrocedan un día en UTC-5)
 
 ### Tarea 9 — Silueta SVG con regiones, chips, leyenda y tooltip
 - **Qué**: componente `BodyMap` con la silueta frontal en SVG, nueve regiones anatómicas y tres chips, coloreadas por nivel con color + patrón + texto, leyenda de los cinco estados, tooltip en hover y foco, y navegación por teclado.
