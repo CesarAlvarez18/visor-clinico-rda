@@ -1,4 +1,16 @@
-import { ANATOMY_LINES, BODY_OUTLINE, REGION_SHAPES, VESSEL_LINES } from './bodyRegions'
+import {
+  ANATOMY_LINES,
+  BACK_BONES,
+  BACK_BONE_SHAPES,
+  BODY_OUTLINE,
+  FRONT_BONES,
+  FRONT_BONE_SHAPES,
+  NERVE_LINES,
+  REGION_SHAPES,
+  SKULL,
+  SURFACE_LINES,
+  VESSEL_LINES,
+} from './bodyRegions'
 
 // Un path SVG mal formado no rompe la aplicación, solo deja de dibujarse y
 // escribe un error en consola; esta prueba lo detecta antes.
@@ -38,11 +50,15 @@ describe('geometría de la silueta', () => {
   })
 
   it('las líneas anatómicas están bien formadas', () => {
-    for (const d of ANATOMY_LINES) assertWellFormed(d)
-    for (const d of VESSEL_LINES) assertWellFormed(d)
+    for (const d of [...ANATOMY_LINES, ...SURFACE_LINES]) assertWellFormed(d)
+    for (const { d } of [...VESSEL_LINES, ...NERVE_LINES, ...FRONT_BONES, ...BACK_BONES]) assertWellFormed(d)
+    for (const d of [...FRONT_BONE_SHAPES, ...BACK_BONE_SHAPES, SKULL.cranium, SKULL.teeth, ...SKULL.hollows]) assertWellFormed(d)
   })
 
   it('cada región tiene un path bien formado', () => {
-    for (const shape of REGION_SHAPES) assertWellFormed(shape.d)
+    for (const shape of REGION_SHAPES) {
+      assertWellFormed(shape.d)
+      for (const { d } of shape.strokes ?? []) assertWellFormed(d)
+    }
   })
 })

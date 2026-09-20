@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Mallas fuente de BodyParts3D (CC BY 4.0, DBCLS): se descargan con
+# scripts/build-anatomy-glb.mjs; solo se versiona el public/models/anatomy.glb
+# resultante. Ver docs/reference/bodyparts3d.md.
+vendor/bodyparts3d/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

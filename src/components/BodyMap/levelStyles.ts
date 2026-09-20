@@ -20,6 +20,15 @@ export interface LevelStyle {
 
 export const NO_DATA_PATTERN_ID = 'level-no-data-pattern'
 export const GLOW_FILTER_ID = 'body-glow'
+export const RIM_FILTER_ID = 'body-rim'
+export const ORGAN_SHEEN_ID = 'organ-sheen'
+export const BONE_FILL_ID = 'bone-fill'
+
+/** Color hueso del esqueleto cuando no expresa un nivel. */
+export const BONE_COLOR = '#e3d5ae'
+
+/** Vasos y nervios sin datos: tonos neutros, fuera de la escala de niveles. */
+export const TREE_NO_DATA = { vessels: '#8fb8ff', nerves: '#dfeaff' }
 
 export const LEVEL_STYLES: Record<SystemLevel, LevelStyle> = {
   normal: { fill: 'rgba(0, 196, 140, 0.75)', stroke: '#4dffc9', badgeFill: '#00c48c', badgeText: '#062a36', short: 'Normal' },
@@ -28,9 +37,9 @@ export const LEVEL_STYLES: Record<SystemLevel, LevelStyle> = {
   severe: { fill: 'rgba(229, 37, 61, 0.9)', stroke: '#ff8595', badgeFill: '#e5253d', badgeText: '#ffffff', short: 'Grave' },
   'no-data': {
     fill: `url(#${NO_DATA_PATTERN_ID})`,
-    stroke: '#4fd6ff',
-    badgeFill: 'rgba(6, 42, 54, 0.9)',
-    badgeText: '#bff2ff',
+    stroke: '#9ccfff',
+    badgeFill: 'rgba(4, 18, 66, 0.9)',
+    badgeText: '#d6ecff',
     short: 'Sin datos',
   },
 }
