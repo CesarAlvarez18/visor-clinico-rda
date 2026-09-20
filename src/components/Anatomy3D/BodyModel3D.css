@@ -1,0 +1,162 @@
+/* Vista 3D: mismo fondo de "render anatómico" que la silueta 2D, con el
+   lienzo de three.js en vez del SVG. */
+.body-model3d {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 600px) auto;
+  grid-template-areas:
+    'stage list'
+    'chips chips'
+    'legend legend'
+    'attribution attribution';
+  gap: 16px 24px;
+  align-items: start;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 16px;
+  background: radial-gradient(ellipse at 50% 30%, #0d3a8f 0%, #061a52 60%, #030b2c 100%);
+  border: 1px solid var(--color-border);
+  color: var(--xray-text, #e6f7fb);
+}
+
+.body-model3d__stage {
+  grid-area: stage;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 78vh;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.body-model3d__canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.body-model3d__canvas canvas {
+  display: block;
+  touch-action: none;
+}
+
+.body-model3d__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.body-model3d__reset {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+}
+
+/* --- Lista accesible de sistemas --- */
+.system-list {
+  grid-area: list;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.system-list__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  font: inherit;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.system-list__item:hover {
+  border-color: var(--color-accent);
+}
+
+.system-list__item:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.system-list__item--selected {
+  border-color: var(--color-accent);
+  border-width: 2px;
+  background: rgba(79, 214, 255, 0.1);
+}
+
+.system-list__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.system-list__name {
+  flex: 1;
+}
+
+.system-list__level {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.system-list__item.level--normal .system-list__swatch { background: #00c48c; }
+.system-list__item.level--mild .system-list__swatch { background: #f5e663; }
+.system-list__item.level--moderate .system-list__swatch { background: #ff9f1c; }
+.system-list__item.level--severe .system-list__swatch { background: #e5253d; }
+.system-list__item.level--no-data .system-list__swatch { background: transparent; border: 1.5px dashed #9ccfff; }
+
+/* --- Rótulos de nivel sobre el modelo (Html de drei) --- */
+.anatomy-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.body-model3d__attribution {
+  grid-area: attribution;
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--xray-text-muted, #9ad9ea);
+}
+
+@media (max-width: 900px) {
+  .body-model3d {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'stage'
+      'list'
+      'chips'
+      'legend'
+      'attribution';
+  }
+
+  .system-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .system-list__item {
+    width: auto;
+  }
+}
